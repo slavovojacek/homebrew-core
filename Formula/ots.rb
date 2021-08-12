@@ -2,6 +2,7 @@ class Ots < Formula
   desc "🔐 Share end-to-end encrypted secrets with others via a one-time URL"
   homepage "https://www.sniptt.com"
   url "https://github.com/sniptt-official/ots/archive/refs/tags/v0.0.11.tar.gz"
+  sha256 "bbede8c0bb3fb4786e1be63760fc628a8364f6595e43855a0e2a3f721cd6d6e7"
   license "Apache-2.0"
 
   depends_on "go" => :build
