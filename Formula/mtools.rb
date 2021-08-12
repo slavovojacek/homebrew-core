@@ -1,17 +1,17 @@
 class Mtools < Formula
   desc "Tools for manipulating MSDOS files"
   homepage "https://www.gnu.org/software/mtools/"
-  url "https://ftp.gnu.org/gnu/mtools/mtools-4.0.31.tar.gz"
-  mirror "https://ftpmirror.gnu.org/mtools/mtools-4.0.31.tar.gz"
-  sha256 "37d0a97717625453e9a88b51c41233f00f2757a51d7eeffe8a0841784bb6f3d6"
+  url "https://ftp.gnu.org/gnu/mtools/mtools-4.0.35.tar.gz"
+  mirror "https://ftpmirror.gnu.org/mtools/mtools-4.0.35.tar.gz"
+  sha256 "27af3ebb1b5c6c74ca0b8276bf21b70c3fb497dd8eb1b605d74df7a761aedef5"
   license "GPL-3.0-or-later"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "c4a2c598ecc8fa73fc8b3aaa9bd56b91c3137c1cfb431ce9c795ee69d9cab3ba"
-    sha256 cellar: :any_skip_relocation, big_sur:       "a38b210941937a9424d92096af7fa3470b9664460ba19d17631675b88889c4e8"
-    sha256 cellar: :any_skip_relocation, catalina:      "9561b64f4c3ca6d11fe5f13e7fa205a777dbecbb4c150b936dbb97eed15c9e8b"
-    sha256 cellar: :any_skip_relocation, mojave:        "0178acec6b4cb1d206534712d0304de310d8887ef4733998387286f46137c16a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e4b1ee8a2faead2c2a4ca5be1534e28f2b0872a012808e7a9a352a98f3ec6a30"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "18cddaa9135b9523b2bf852c66cebf108a52c665faabb4eceb1dc8038f7b3265"
+    sha256 cellar: :any_skip_relocation, big_sur:       "5b327d09dd012e22085b77055ca713db9e2b0b054b58d2da0f446d977d4a7d17"
+    sha256 cellar: :any_skip_relocation, catalina:      "82f3ac919cf59793834c72e525d8b76f0249401a78c6bdc16eb70ea394f1b798"
+    sha256 cellar: :any_skip_relocation, mojave:        "eff0b4cc2fa5e3090634b2f25865593c240a654edeb0a0b21c628179ac8899d2"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "56ebb016b728650f785c08f42c9ae191bcd163c34b5aaed9dae3352a394e5d97"
   end
 
   conflicts_with "multimarkdown", because: "both install `mmd` binaries"

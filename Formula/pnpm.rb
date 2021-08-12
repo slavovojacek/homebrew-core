@@ -3,16 +3,21 @@ class Pnpm < Formula
 
   desc "📦🚀 Fast, disk space efficient package manager"
   homepage "https://pnpm.io/"
-  url "https://registry.npmjs.org/pnpm/-/pnpm-6.10.2.tgz"
-  sha256 "d458ed52a874db89a23550565041812e93a0da01421bdfec976bf3d7caf29c40"
+  url "https://registry.npmjs.org/pnpm/-/pnpm-6.12.1.tgz"
+  sha256 "4037e78e0ec637e90c86ed5765cd4409c3deb0a6ca2a9864b202bb957e328ed9"
   license "MIT"
 
+  livecheck do
+    url "https://registry.npmjs.org/pnpm/latest"
+    regex(/["']version["']:\s*?["']([^"']+)["']/i)
+  end
+
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "b54a1905d3729936b6ca54ddce172ac7a00ff54381a1711e99ee7a1e28963414"
-    sha256 cellar: :any_skip_relocation, big_sur:       "e8db4c63c5d688293e9a4e39de51310e87fd76f33fb0a279e6fdeb27847e980f"
-    sha256 cellar: :any_skip_relocation, catalina:      "e8db4c63c5d688293e9a4e39de51310e87fd76f33fb0a279e6fdeb27847e980f"
-    sha256 cellar: :any_skip_relocation, mojave:        "e8db4c63c5d688293e9a4e39de51310e87fd76f33fb0a279e6fdeb27847e980f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b54a1905d3729936b6ca54ddce172ac7a00ff54381a1711e99ee7a1e28963414"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "7da2aca6833071eec6626c22e5026af7587cd297ce324d49b4f3bdffb60ea8ee"
+    sha256 cellar: :any_skip_relocation, big_sur:       "a82c695979562329a3b6bfe645c59d8cbf8708ff65d95ad6704bfaa023f1ce60"
+    sha256 cellar: :any_skip_relocation, catalina:      "a82c695979562329a3b6bfe645c59d8cbf8708ff65d95ad6704bfaa023f1ce60"
+    sha256 cellar: :any_skip_relocation, mojave:        "a82c695979562329a3b6bfe645c59d8cbf8708ff65d95ad6704bfaa023f1ce60"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7da2aca6833071eec6626c22e5026af7587cd297ce324d49b4f3bdffb60ea8ee"
   end
 
   depends_on "node"

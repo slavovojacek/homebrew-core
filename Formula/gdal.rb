@@ -4,7 +4,7 @@ class Gdal < Formula
   url "https://download.osgeo.org/gdal/3.3.1/gdal-3.3.1.tar.xz"
   sha256 "48ab00b77d49f08cf66c60ccce55abb6455c3079f545e60c90ee7ce857bccb70"
   license "MIT"
-  revision 1
+  revision 3
 
   livecheck do
     url "https://download.osgeo.org/gdal/CURRENT/"
@@ -12,10 +12,10 @@ class Gdal < Formula
   end
 
   bottle do
-    sha256 arm64_big_sur: "4b2f6161d15671b511aab4892c00aeb98c1508de4166ecda236ecd85e782c83e"
-    sha256 big_sur:       "7e5ba2dfcf0a525034bcddb77e2fe8706d7cc4c19a966c1dae20537bb8c93ecc"
-    sha256 catalina:      "24a207ad19ffacb02faebbfb3b3dee94099d576873f7b4340fab1c617a970132"
-    sha256 mojave:        "f75e12fe0ae2dd60cc9fdd2a14aa5301ceccf53f5c5efec042673514e7ef863a"
+    sha256 arm64_big_sur: "63d1f92d6123d4f3fb5142b16a2d8898b0b48aa2d9133651c09f974f1575a560"
+    sha256 big_sur:       "4895d4f179c3264abe86fab90d673571f6a3a559fa5d4d27ddf16d2007cf372f"
+    sha256 catalina:      "47d4586c2b7bbbea2f70dbaee7f2aaea2e8d7d46bea69d2d476ad63d1a950015"
+    sha256 mojave:        "0f57ca35e42fd11e201056124b7c077a7ef3ca73e3857581c5fce28f74ddc002"
   end
 
   head do

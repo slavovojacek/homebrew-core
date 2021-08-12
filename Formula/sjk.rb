@@ -1,12 +1,12 @@
 class Sjk < Formula
   desc "Swiss Java Knife"
   homepage "https://github.com/aragozin/jvm-tools"
-  url "https://search.maven.org/remotecontent?filepath=org/gridkit/jvmtool/sjk-plus/0.18/sjk-plus-0.18.jar"
-  sha256 "583284174dde91c32acdef01550d376b2e15be8573e5d99007651451f5bc8854"
+  url "https://search.maven.org/remotecontent?filepath=org/gridkit/jvmtool/sjk-plus/0.19/sjk-plus-0.19.jar"
+  sha256 "f1504271eba4783473aade3e929df0049a380b0ed1aeb0c997ddc0506acbc912"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "c59ab026f8a809a25156e0acf7bcb487439d842e5dc8426a39d01a01a1744511"
+    sha256 cellar: :any_skip_relocation, all: "2bc1c9dadeff20643d36e42a6f018a80c6df288fa5e3bbaf557b611007142b14"
   end
 
   depends_on "openjdk"

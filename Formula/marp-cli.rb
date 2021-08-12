@@ -3,16 +3,16 @@ require "language/node"
 class MarpCli < Formula
   desc "Easily convert Marp Markdown files into static HTML/CSS, PDF, PPT and images"
   homepage "https://github.com/marp-team/marp-cli"
-  url "https://registry.npmjs.org/@marp-team/marp-cli/-/marp-cli-1.1.1.tgz"
-  sha256 "62711d9298f96a9634020d31a05561ad076e59e06749b0be643a20ccb8533770"
+  url "https://registry.npmjs.org/@marp-team/marp-cli/-/marp-cli-1.3.0.tgz"
+  sha256 "3135cf55081f2b31b5dfc650fa9fd8f4a70772e6daffa286eeddf7e5cc7f609f"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "c7497d7d226b8ace2ba4f24a231c946d13683acdf9ec40a91fd37c66e6e80aee"
-    sha256 cellar: :any_skip_relocation, big_sur:       "9fbc8ace15dc205f82033d8636df4c56e96fea5c544557ec114753fce91cadc4"
-    sha256 cellar: :any_skip_relocation, catalina:      "9fbc8ace15dc205f82033d8636df4c56e96fea5c544557ec114753fce91cadc4"
-    sha256 cellar: :any_skip_relocation, mojave:        "9fbc8ace15dc205f82033d8636df4c56e96fea5c544557ec114753fce91cadc4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5eba1baa26264f191a6063e73992badb89708e0aeb0a54c8f512ff31b1ce2ebc"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "e26d6dd770e30bc23efb8eb80f14d487c0eb8895bbda16cc935e56866a92e1bb"
+    sha256 cellar: :any_skip_relocation, big_sur:       "923196c727bc3b5b6a0c6eb695a9956460c88b66df5c2084c68155b7a8329b4e"
+    sha256 cellar: :any_skip_relocation, catalina:      "923196c727bc3b5b6a0c6eb695a9956460c88b66df5c2084c68155b7a8329b4e"
+    sha256 cellar: :any_skip_relocation, mojave:        "923196c727bc3b5b6a0c6eb695a9956460c88b66df5c2084c68155b7a8329b4e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "350e742a8306fa576ed9be835d166dd1a12a5ee471899a68e6a42294e78ce2e7"
   end
 
   depends_on "node"

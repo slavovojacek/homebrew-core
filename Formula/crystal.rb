@@ -4,8 +4,8 @@ class Crystal < Formula
   license "Apache-2.0"
 
   stable do
-    url "https://github.com/crystal-lang/crystal/archive/1.1.0.tar.gz"
-    sha256 "7475f699dd64dcc2cf126feddf3eeffb426e1df2e8d80547df0540eaa1775170"
+    url "https://github.com/crystal-lang/crystal/archive/1.1.1.tar.gz"
+    sha256 "add4b07f23de6e493a17d951e4cff38e1cbf2356cc4a3f642687c769f9ba7d12"
 
     resource "shards" do
       url "https://github.com/crystal-lang/shards/archive/v0.15.0.tar.gz"
@@ -19,10 +19,10 @@ class Crystal < Formula
   end
 
   bottle do
-    sha256 big_sur:      "203fd3e96b08c633eb2d7613b8705443eed7c3a759acbc0be3c738d15cc52ac0"
-    sha256 catalina:     "a9eb1a0410a72bcaad10dac0c9e86b5edfa97d8d540610a759b1bfd20cf3a7d3"
-    sha256 mojave:       "2d002f451ded60bdee46d73dfcc4fcc76611bf542e83e6f6136a3529c064d3c0"
-    sha256 x86_64_linux: "4b80defa3c6475565ea3bd60c1378267e26330e0da37610f0ee4b3b28d241e7f"
+    sha256 big_sur:      "b7abbccaeb24c6f7c49bfa4036690462e271475ac6d9190e9946ef7a887c4098"
+    sha256 catalina:     "5d21445288240651ccf2bed421b2127884c12191a6ca514f609fe886337d46ef"
+    sha256 mojave:       "a2e65148242942f13794248d54063f652336e34e8de98aa776e266b5cd8daaa2"
+    sha256 x86_64_linux: "635aa215f78244e1a6d4df02d909a436f5a150af2fd261615bbe3e6843aebf3f"
   end
 
   head do

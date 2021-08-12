@@ -95,7 +95,7 @@ class Glibc < Formula
 
   depends_on "binutils" => :build
   depends_on GawkRequirement => :build
-  depends_on "linux-headers" => :build
+  depends_on "linux-headers@4.4" => :build
   depends_on MakeRequirement => :build
   depends_on SedRequirement => :build
   depends_on BrewedGlibcNotOlderRequirement
@@ -107,7 +107,7 @@ class Glibc < Formula
 
   def install
     # Fix Error: `loc1@GLIBC_2.2.5' can't be versioned to common symbol 'loc1'
-    # See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=
+    # See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=869717
     # Fixed in glibc 2.24
     inreplace "misc/regexp.c", /^(char \*loc[12s]);$/, "\\1 __attribute__ ((nocommon));"
 

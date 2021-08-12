@@ -1,28 +1,25 @@
 class Psalm < Formula
   desc "PHP Static Analysis Tool"
   homepage "https://psalm.dev"
-  url "https://github.com/vimeo/psalm/releases/download/4.8.1/psalm.phar"
-  sha256 "896246540c669c8d21e62e7c3865bc23cf1e7980caa920cd04b4e38a60354faf"
+  url "https://github.com/vimeo/psalm/releases/download/4.9.2/psalm.phar"
+  sha256 "71d704c3306488784b39241752535d90a4e1487d8b3efa347aee7dddd5397a9d"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "eda9a66bdc4eceb127868bbdaf7a2b0fe9cea0226b7912f2be1149d91cc14179"
-    sha256 cellar: :any_skip_relocation, big_sur:       "a54b71a894f31a2c1e5cae10fb0e394fcdc5f874c7d4ce6c66533a4a13605241"
-    sha256 cellar: :any_skip_relocation, catalina:      "a54b71a894f31a2c1e5cae10fb0e394fcdc5f874c7d4ce6c66533a4a13605241"
-    sha256 cellar: :any_skip_relocation, mojave:        "a54b71a894f31a2c1e5cae10fb0e394fcdc5f874c7d4ce6c66533a4a13605241"
-  end
-
-  # Keg-relocation breaks the formula when it replaces `/usr/local` with a non-default prefix
-  pour_bottle? do
-    on_macos do
-      reason "The bottle needs to be installed into `#{Homebrew::DEFAULT_PREFIX}` on Intel macOS."
-      satisfy { HOMEBREW_PREFIX.to_s == Homebrew::DEFAULT_PREFIX || Hardware::CPU.arm? }
-    end
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "5d0adee30ee864ba7dab89c8b8a29730f0c4732b6ea5c916cdefa1c180833333"
+    sha256 cellar: :any_skip_relocation, big_sur:       "d8e9fc759e0f453699ddd45d9487799930e1f1e4fe4d2aa46bd75c1b00e15d77"
+    sha256 cellar: :any_skip_relocation, catalina:      "d8e9fc759e0f453699ddd45d9487799930e1f1e4fe4d2aa46bd75c1b00e15d77"
+    sha256 cellar: :any_skip_relocation, mojave:        "d8e9fc759e0f453699ddd45d9487799930e1f1e4fe4d2aa46bd75c1b00e15d77"
   end
 
   depends_on "composer" => :test
 
   uses_from_macos "php"
+
+  # Keg-relocation breaks the formula when it replaces `/usr/local` with a non-default prefix
+  on_macos do
+    pour_bottle? only_if: :default_prefix if Hardware::CPU.intel?
+  end
 
   def install
     bin.install "psalm.phar" => "psalm"

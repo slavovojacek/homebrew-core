@@ -1,5 +1,5 @@
-class Wxmac < Formula
-  desc "Cross-platform C++ GUI toolkit (wxWidgets for macOS)"
+class Wxwidgets < Formula
+  desc "Cross-platform C++ GUI toolkit"
   homepage "https://www.wxwidgets.org"
   url "https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.5/wxWidgets-3.1.5.tar.bz2"
   sha256 "d7b3666de33aa5c10ea41bb9405c40326e1aeb74ee725bb88f90f1d50270a224"
@@ -12,11 +12,11 @@ class Wxmac < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_big_sur: "9080b4b039c1267c300977b6a1bab583717f0829f6858eeec580a55473e25a2f"
-    sha256 cellar: :any,                 big_sur:       "a4ca829d8774407a89b727677286788c2088c7f5814e4e21b07cd339453f6950"
-    sha256 cellar: :any,                 catalina:      "1b1e632388b899230f8728e21ac2336e741b8233094bf572e9b5e93e9028efe1"
-    sha256 cellar: :any,                 mojave:        "1be251946ba9b3c4f5acf14a1c3a99f9a5d06360dce108d62ba495c84594159c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4e1acbd860a4b0225c8a3e26f938ca5cb2ed281c03b3fae23be99a3e4ea0ca20"
+    sha256 cellar: :any,                 arm64_big_sur: "00b2086f68be587c6ee848954845a81e1e4bda964dc4a8b8ec117d6acb54c833"
+    sha256 cellar: :any,                 big_sur:       "b75599c4bb938ce01b3ddcce13c8cea3d7f329db85a1a63672eca1266621e857"
+    sha256 cellar: :any,                 catalina:      "a9de66ca781fe633b958a0a7745b47fecd4ffb3fc9d7302757b057ded6c88e22"
+    sha256 cellar: :any,                 mojave:        "974046c7307cca6cb5eec6ef6b06c57817f42782ef1cfa03ff1f4bb4a97190bd"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f20b0033ce08592ade30d821da88010582c6107e7269e112ab3bbd48ec887f66"
   end
 
   depends_on "jpeg"
@@ -25,7 +25,7 @@ class Wxmac < Formula
 
   on_linux do
     depends_on "pkg-config" => :build
-    depends_on "gtk+"
+    depends_on "gtk+3"
     depends_on "libsm"
     depends_on "mesa-glu"
   end
@@ -64,13 +64,13 @@ class Wxmac < Formula
     system "./configure", *args
     system "make", "install"
 
-    # wx-config should reference the public prefix, not wxmac's keg
+    # wx-config should reference the public prefix, not wxwidgets's keg
     # this ensures that Python software trying to locate wxpython headers
-    # using wx-config can find both wxmac and wxpython headers,
+    # using wx-config can find both wxwidgets and wxpython headers,
     # which are linked to the same place
     inreplace "#{bin}/wx-config", prefix, HOMEBREW_PREFIX
 
-    # For consistency with the versioned wxmac formulae
+    # For consistency with the versioned wxwidgets formulae
     bin.install_symlink "#{bin}/wx-config" => "wx-config-#{version.major_minor}"
     (share/"wx"/version.major_minor).install share/"aclocal", share/"bakefile"
   end

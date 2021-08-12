@@ -7,12 +7,13 @@ class Samba < Formula
   url "https://download.samba.org/pub/samba/stable/samba-4.14.5.tar.gz"
   sha256 "bb6ef5d2f16b85288d823578abc453d9a80514c42e5a2ea2c4e3c60dc42335c3"
   license "GPL-3.0-or-later"
+  revision 1
 
   bottle do
-    sha256 arm64_big_sur: "5825541d678648183fe2d19a49a63cb08d1b0686e6834390c39046442b945f52"
-    sha256 big_sur:       "31ea52ccf74617338ed0037dc4a759cd8a723fc5fe15352daaa2300b9f4d6c30"
-    sha256 catalina:      "76ddd1be9396e5fa9063e919fb2ead0a6a870ef02fd59d6029b9e47e3153da7d"
-    sha256 mojave:        "14465ea48a8aa067a205dc4461ff27254ca138bcc113fddd52a53089295897a8"
+    sha256 arm64_big_sur: "1a70bc9b661f27f9c9b9cab545e504f479c87b367fb78a2ee9d68ad77f687a8c"
+    sha256 big_sur:       "cbe5d63987f3afff71ed29f63b077a3c8f33f1eab38cc0a4419d4bbd0e01509e"
+    sha256 catalina:      "82f62e5d2f0b43d99caf957c63a0459ba741cb40aebb6ec1e96396448ae44b4d"
+    sha256 mojave:        "9364ca7435734f573707560b874f2296712c476d833e842a2153615d32285611"
   end
 
   # configure requires python3 binary to be present, even when --disable-python is set.
@@ -26,6 +27,13 @@ class Samba < Formula
     sha256 "3810e998308fba2e0f4f26043035032b027ce51ce5c8a52a8b8e340ca65f13e5"
   end
 
+  # Workaround for "charset_macosxfs.c:278:4: error: implicit declaration of function 'DEBUG' is invalid in C99"
+  # Can be removed when https://bugzilla.samba.org/show_bug.cgi?id=14680 gets resolved.
+  patch do
+    url "https://attachments.samba.org/attachment.cgi?id=16579"
+    sha256 "86fce5306349d1c8f3732ca978a31065df643c8770114dc9d068b7b4dfa7d282"
+  end
+
   def install
     # avoid `perl module "Parse::Yapp::Driver" not found` error on macOS 10.xx (not required on 11)
     if MacOS.version < :big_sur
@@ -37,9 +45,6 @@ class Samba < Formula
         system "make", "install"
       end
     end
-    # CFLAGS is for avoiding hitting https://bugzilla.samba.org/show_bug.cgi?id=14680 .
-    # Remove this CFLAGS when the patch ( https://attachments.samba.org/attachment.cgi?id=16579 ) gets merged.
-    ENV.append "CFLAGS", "-include #{buildpath}/lib/util/debug.h"
     system "./configure",
            "--disable-cephfs",
            "--disable-cups",
@@ -65,14 +70,20 @@ class Samba < Formula
     on_macos do
       # macOS has its own SMB daemon as /usr/sbin/smbd, so rename our smbd to samba-dot-org-smbd to avoid conflict.
       # samba-dot-org-smbd is used by qemu.rb .
-      mv "#{sbin}/smbd", "#{sbin}/samba-dot-org-smbd"
+      # Rename mdfind and profiles as well to avoid conflicting with /usr/bin/{mdfind,profiles}
+      { sbin => "smbd", bin => "mdfind", bin => "profiles" }.each do |dir, cmd|
+        mv dir/cmd, dir/"samba-dot-org-#{cmd}"
+      end
     end
   end
 
   def caveats
     on_macos do
       <<~EOS
-        macOS has its own SMB daemon as /usr/sbin/smbd, so Samba version of smbd is installed as "#{HOMEBREW_PREFIX}/sbin/samba-dot-org-smbd"
+        To avoid conflicting with macOS system binaries, some files were installed with non-standard name:
+        - smbd:     #{HOMEBREW_PREFIX}/sbin/samba-dot-org-smbd
+        - mdfind:   #{HOMEBREW_PREFIX}/bin/samba-dot-org-mdfind
+        - profiles: #{HOMEBREW_PREFIX}/bin/samba-dot-org-profiles
 
         On macOS, Samba should be executed as a non-root user: https://bugzilla.samba.org/show_bug.cgi?id=8773
       EOS

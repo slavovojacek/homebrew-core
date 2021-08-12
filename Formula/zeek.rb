@@ -13,6 +13,7 @@ class Zeek < Formula
     sha256 big_sur:       "48f4fc5ac41e8aa13a8f84455e7e575b6357d7c84a448e2646ee161dad3f83aa"
     sha256 catalina:      "ef67277c8fc28f2759462296f814ccc53d251154334e409c5dfcb3e45356bdc7"
     sha256 mojave:        "74cb86c0e309abb6634066e4ff47a8f1a973548f1ae09f6146e895d7250127bb"
+    sha256 x86_64_linux:  "4d93103756e5a2de71144cbed021b1add3436d7109e975327eda94c7f6990bf1"
   end
 
   depends_on "bison" => :build
@@ -28,6 +29,12 @@ class Zeek < Formula
   uses_from_macos "flex"
   uses_from_macos "libpcap"
   uses_from_macos "zlib"
+
+  on_linux do
+    depends_on "gcc" # For C++17
+  end
+
+  fails_with gcc: "5"
 
   def install
     # Remove SDK paths from zeek-config. This breaks usage with other SDKs.
